@@ -4,7 +4,7 @@ The repository contains various RL algorithms and solved problems, based on the 
 
 ## Files
 
-  q_learning: contains Q-learning-based agent
+  q_learning: contains Q-learning method
   
   DPAgent: contains the dynamic programming methods, policy
             iteration and value iteration algorithms.
