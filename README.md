@@ -1,8 +1,8 @@
-Reinforcement Learning
+#Reinforcement Learning
 
 The repository contains various RL algorithms and solved problems, based on the OpenAI Gymnasium module.
 
-Files:
+##Files
   q_learning : contains Q-learning-based agent
   DPAgent : contains the dynamic programming methods, policy
             iteration and value iteration algorithms.
