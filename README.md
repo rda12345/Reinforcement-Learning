@@ -4,8 +4,11 @@ The repository contains various RL algorithms and solved problems, based on the 
 
 ## Files
 
-  q_learning : contains Q-learning-based agent/
+  q_learning : contains Q-learning-based agent
+  
   DPAgent : contains the dynamic programming methods, policy
             iteration and value iteration algorithms.
-  Taxi-v3 : GridWorld environment solved by both policy iteration and value iteration./
-  FrozenLake-v1: GridWorld environment solved by Q-learning./
+  
+  Taxi-v3 : GridWorld environment solved by both policy iteration and value iteration.
+  
+  FrozenLake-v1: GridWorld environment solved by Q-learning.
