@@ -14,15 +14,7 @@ Rewards - -1 per step to (to encourage efficiency),
           -10 for illegal pickup/dropoff
 
 
-Solution - COMPLETE
-
-
-TASKS:
-Solve with: 
-    1.Value iteration
-    2. policy iteration, Time-difference
-    3. Q-learning
-    4. SARSA.
+Solution - solved with policy and value iteration methods.
 """
 
 
@@ -39,9 +31,11 @@ threshold: float = 1e-6 # the ac
 max_iters: int = 10**3  # maximum iterations of the policy and value iterations.
 
 ## Initializing the agent and setting initial parameters
+# create the Taxi environment
 env = gym.make("Taxi-v3", render_mode="ansi")
 agent = DPAgent(env, gamma, threshold)
-state, info = env.reset()
+# resent the environment (start a new episode)
+state, info = env.reset() # state = (taxi_row, taxi_col, passenger_location, destination)
 print(env.render())
 
 

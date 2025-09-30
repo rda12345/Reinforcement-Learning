@@ -33,6 +33,7 @@ class DPAgent(object):
         """
         Parameters
         ----------
+        environment, gymnasium environment
         gamma : float, discount factor, dictates the importance of future reward (should be in the range [0,1)]) 
         threshold : float, the acceptable convergence error of the policy evaluation
         """
@@ -50,7 +51,7 @@ class DPAgent(object):
         self.n_states = self.env.observation_space.n
         self.n_actions = self.env.action_space.n
         
-        # initializing a random policy and value-state function
+        # initializing a random policy and vanishing value-state function
         self.policy = np.random.choice(self.n_actions,self.n_states)
         self.V = np.zeros(self.n_states)
         
