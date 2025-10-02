@@ -22,7 +22,7 @@ Solution - solved with policy and value iteration methods.
 import numpy as np
 import gymnasium as gym
 import matplotlib.pyplot as plt
-from dynamical_programming import DPAgent
+from dynamic_programming import DPAgent
 
 
 ## Model parameters
