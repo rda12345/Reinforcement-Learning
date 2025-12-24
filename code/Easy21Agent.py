@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Agent is a class implementing a number of Monte Carlo (MC) reinforcement
+Easy21Agent is a class implementing a number of Monte Carlo (MC) reinforcement
 learning methods:
     1.First-visit MC method for estimating the state-value function for a
         given policy.
