@@ -13,3 +13,8 @@ Many of the files follow Sutton and Barto's [Reinforcement Learning: an Introduc
   Taxi-v3: GridWorld environment solved by both policy iteration and value iteration.
   
   FrozenLake-v1: GridWorld environment solved by Q-learning.
+
+  Easy21: Environment of a simplified version of Blackjack
+
+  Easy21Agent: Contains an Easy21Agent class which includes various 
+Monte-Carlo policy evaluation and control RL algorithms
