@@ -7,9 +7,7 @@ learning methods:
         given policy.
     2.  On-policy first-visit Monte Carlo control algorithm with epsillong greedy policy. 
         Various possible update rules for the learning and exploration rates are proposed.
-        
 
-    
                         
 The methods are utilized to find the optimal policy (or a proxy of that) in a 
 finite Markovian Decision Process (MDP). 
@@ -354,7 +352,143 @@ class Easy21Agent(object):
         
 
 
+# TODO: Modify and finish the TD policy
 
+    # ---------------------------- TD policy evaluation ---------------------------
+
+
+    def nStepTDpolicy_evaluation(self, n):
+        """
+        n-step time-difference (TD) method for estimating the state-value function for a
+        given policy.
+
+        n : int, the time-difference method extends over n steps
+        """
+        visited_states = []
+
+        for _ in range(self.max_iters):
+            # initializing the step counter
+            t = 0
+            # initialization of a dictionary mapping state to the episode step
+            step_dict = {}
+            # reset the list of episode states
+            episode_states = []
+
+            # reset environment and choose the initial state
+            state, _ = self.env.reset()  # (player sum, dealer's showing card, usable ace)
+            done = False
+            while not done:
+                # perform the next action
+                action = self.policy[state]
+
+                # for the chosen action observe the new environment state and reward
+                next_state, reward, terminated, truncated, _ = self.env.step(action)
+
+                # store the reward and next state as R_{t+1}, S_{t+1}
+                ...
+                rewards[t + 1] = reward
+                states[t + 1] = next_state
+
+                # reset the state
+                state = next_state
+                t += 1
+                # check if episode is done
+                done = terminated or truncated
+
+            total_steps = counter
+            tau = t - n
+            # The formula for G only works if a non-zeros reward is only
+            # given at the terminal state
+            if tau >= 0:
+                dicounted_returns = [gamma ** (i - tau - 1) * rewards[i] for i in
+                                     range(tau + 1, min(tau + n, total_time) + 1)]
+                G = sum(discounted_returns)
+                if tau + n < total_steps:
+                    G += G + (gamma ** n) * self.V[states[tau + n]]
+                    self.V[states[tau]] += alpha * (G - self.V[states[tau]])
+
+
+# TODO: Finish the TD control
+
+# ----------------------------------- TD --------------------------------------
+
+
+def TD(self, Lambda, exploration_method, learning_method):
+    """
+    TD learning algorithm, with a varying learning and exploration rates.
+    """
+    visited_states = []
+    for _ in range(self.max_iters):
+
+        # reset stick flag
+        self.stick = False
+
+        # contain  the (state,action) pairs and states of the episode
+        episode_states = []
+
+        # generate an episode starting from a ramdom state following the policy
+        state, _ = self.env.reset()
+        action = self.get_action(state, method=exploration_method)
+
+        # if player chooses to stick modify the stick flag
+        if not action:
+            self.stick = True
+            next_action = 0
+
+        done = False
+
+        # Run an episode
+        while not done:
+            pair = (*state, action)
+
+            # update the state and pair counters
+            self.Ns[state] += 1
+            self.Nsa[pair] += 1
+
+            # record the state-action pairs
+            if state not in episode_states:
+                episode_states.append(state)
+
+            if state not in visited_states:
+                visited_states.append(state)
+
+            # for the chosen action observe the new environment state and reward
+            next_state, reward, terminated, truncated, _ = self.env.step(action)
+
+            # get next action if the player didn't stick
+            if not self.stick:
+                next_action = self.get_action(next_state, method=exploration_method)
+                if not next_action:
+                    self.stick = True
+            next_pair = (*next_state, next_action)
+            # update Q
+            self.Q[pair] = self.TD_update_rule(pair,
+                                               next_pair,
+                                               Return=reward,
+                                               Lambda=0)
+
+            # reset the state
+            state = next_state
+            action = next_action
+
+            # check if episode is done
+            done = terminated or truncated
+
+        # update the policy
+        for state in episode_states:
+            self.policy[state] = int(np.argmax(self.Q[(*state,)]))
+
+            # evaluate the state-value function
+        for state in visited_states:
+            # action corresponding to the maximum value for the pair (state, action)
+            action = self.policy[state]
+            self.V[state] = self.Q[(*state, action)]
+
+
+
+# TODO: TD exercise version
+
+# TODO: Linear function approximation
 
     
     
