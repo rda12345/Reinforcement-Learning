@@ -5,12 +5,12 @@ DPAgent is a class implementing two dynamical programming reinforcement learning
 methods.
     
     1. Policy iteration - Initialize the state-value function, V, and the policy
-                    arbitrarly. Perform iterations of sequential of 
+                    arbitrary. Perform iterations of sequential of
                     iterative policy evaluation and policy improvement until
                     obtaining a stable policy (convergence).
-                    iterative policy evaluation: V is computed for a 
+                    iterative policy evaluation: V is computed for
                     the current policy utilizing an iterative method.
-                    policy imporvement: for the current V check wether a better
+                    policy improvement: for the current V check weather a better
                     policy exists.
     2. Value iteration - COMPLETE
                         
